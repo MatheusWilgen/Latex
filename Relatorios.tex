@@ -1,0 +1,289 @@
+%%------------------------------------------------------
+% 
+%% UNIVERSIDADE FEDERAL DE SANTA CATARINA - UFSC
+%
+%% Prof.: Wyllian B. da Silva
+%%
+%% Template: estilo IEEEtran [paper com duas colunas]
+%% Adaptado de: https://ieeeauthorcenter.ieee.org/create-your-ieee-article/use-authoring-tools-and-ieee-article-templates/ieee-article-templates/templates-for-transactions/
+%               https://ctan.org/tex-archive/macros/latex/contrib/IEEEtran?lang=en
+
+%% Instruções: http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf
+%%
+%% Recomendações:
+%% Utilize o Edito Kile (SO Linux)
+%% Certifique-se de que a codificação de caracteres utilizada é a UTF-8
+
+
+
+
+
+\documentclass[journal]{IEEEtran}
+
+
+%%------------------------------------------------------
+%% Packages
+%%------------------------------------------------------
+\usepackage[T1]{fontenc}           %% Codificação de caracteres
+\usepackage[utf8]{inputenc}        %% Codificação de caracteres (conversão automática dos acentos)
+\usepackage[dvips]{graphicx}       %% para a macro includegraphics 
+\usepackage[english,brazil]{babel} %% PT_BR e EN (o último define a prioridade no arquivo)
+\usepackage{pgf}                   %% macro para criar gráficos
+\usepackage{epsfig}                %% or use the epsfig package if you prefer to use the old commands
+\usepackage{graphics}              %% use the graphics package for simple commands
+\usepackage{graphicx}              %% or use the graphicx package for more complicated commands
+\usepackage{epstopdf}              %% enable EPS (convert to PDF)
+\usepackage{float}                 %% float environment
+\usepackage{eqparbox}              %% to define a group of boxes 
+\usepackage{hyphenat}              %% prevent hyphenation
+\usepackage{hyperref}              %% enalbe one-click link
+
+% \usepackage{showframe} %% just for the example
+
+% \usepackage[sort,compress]{cite} %% disable if natbib package is activated
+\usepackage[numbers,sort&compress,square]{natbib} %% e.g., [2-5]
+
+
+
+%%------------------------------------------------------
+%% Definitions
+%%------------------------------------------------------
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+%% Can use something like this to put references on a page
+%% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+%%----------------- Definindo as variáveis com números
+\makeatletter
+%
+\newcommand{\prenome}{\afterassignment\prenome@aux\count0=}
+\newcommand{\prenome@aux}{\csname prenome\the\count0\endcsname}
+%
+\newcommand{\nomedomeio}{\afterassignment\nomedomeio@aux\count0=}
+\newcommand{\nomedomeio@aux}{\csname nomedomeio\the\count0\endcsname}
+%
+\newcommand{\sobrenome}{\afterassignment\sobrenome@aux\count0=}
+\newcommand{\sobrenome@aux}{\csname sobrenome\the\count0\endcsname}
+\makeatother
+%%%%%
+
+%%----------------- Configurações de hyperlinks
+%% Não decorado, sem destaque
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 0},
+}
+
+
+
+
+%%------------------------------------------------------
+%% Configurações
+%%------------------------------------------------------
+
+%%----------------- Título
+\title                                                {Spin Coater de Baixo Custo Desenvolvido com Motor sem Escovas DC}
+
+\newcommand{\emailautor}                              {matheus.w.g@grad.ufsc.br}
+
+\newcommand{\siglaRevista}                            {UFSC}
+
+\newcommand{\Revista}                                 {Universidade Federal de Santa Catarina (UFSC)}
+
+
+
+%%----------------- Autor Principal (a acenturação deverá ser indireta)
+\newcommand{\prenomePrincipal}                        {Matheus}
+\newcommand{\nomedomeioPrincipal}                     {Wilgen}
+\newcommand{\sobrenomePrincipal}                      {Gonçalves}
+
+
+
+%%------------------------------------------------------
+%% Autor(es)
+
+
+%%----------------- Apenas um autor
+\author{\IEEEauthorblockN{\prenomePrincipal~\nomedomeioPrincipal~\sobrenomePrincipal\IEEEauthorrefmark{1} - 17150183}
+
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Universidade Federal de Santa Catarina (UFSC)}% <-this % stops an unwanted space
+
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Projeto Integrador - EMB5636}% <-this % stops an unwanted space
+
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Professor Wyllian Bezerra da Silva}% <-this % stops an unwanted space
+%%
+
+\thanks{\Revista. Correspond\^encia ao autor: \prenomePrincipal~\nomedomeioPrincipal~\sobrenomePrincipal~(email: \emailautor).}}
+
+
+
+%%------------------------------------------------------
+%% Cabeçalho
+\markboth{\MakeUppercase{\Revista}}%% acentuação indireta
+%% Apenas um autor:
+{\sobrenomePrincipal: \MakeUppercase{\Revista}}
+
+
+%%------------------------------------------------------
+%% Abstract
+\IEEEtitleabstractindextext{
+
+  {\selectlanguage{brazil}
+    \begin{abstract}
+    O procedimento de spin coating é simples e eficaz na tarefa de formar um filme
+fino uniforme sobre superfícies planas, é possível alcançar espessuras da ordem de
+micrometros a nanômetros, este fato faz das máquinas de spin coating muito desejadas
+em laboratórios de filmes finos e tratamentos de superfícies. Este trabalho terá o
+objetivo de produzir uma máquina de spin coating com baixo custo em relação as
+comerciais, também tem como objetivo o desenvolvimento de um driver para motores
+sem escovas DC de HD’s, será utilizado processos de fabricação de PCI, programação
+em C++ e microcontroladores Atmel. Spin coating é amplamente utilizado para o estudo de filmes finos uniformes, em aplicações que incluem sensores, sistemas microeletromecânicos e circuitos integrados.
+
+    \end{abstract}
+    %%----------------- Keywords
+    \renewcommand\IEEEkeywordsname{Palavras-chave} %% Palavras-chave ao invés de 'Index Terms'
+    \begin{IEEEkeywords}
+    Spin Coater, Arduino e Disco Rígido.
+    \end{IEEEkeywords}
+  }
+  
+}
+
+
+
+\begin{document}
+
+
+
+%%------------------------------------------------------
+%% Inserção de informações
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+
+%%------------------------------------------------------
+%% Section
+\section{R1 - Descrição}
+
+\IEEEPARstart{O} processo de Spin Coating consiste em fixar um substrato através de vácuo ou material adesivo, com o centro de massa centralizado com o rotor da máquina utilizada, adiciona-se a solução desejada sobre o substrato para que seja produzido um filme fino, neste processo a rotação retira o excesso de solução, por meio da força centrípeta. Para esta finalidade é utilizado uma máquina que tem a capacidade de controlar a rotação do substrato, este controle pode ser feito através da manipulação direta do usuário ou de um modo de operação automático da ferramenta.
+
+
+\begin{table}[!htbp]
+\renewcommand{\arraystretch}{1.3}
+\caption{Cronograma de atividades}
+\label{tab:tabela1}
+\centering
+\begin{tabular}{c|l|l|l|l|l|l|l|l|l|}
+\cline{2-10}
+\multicolumn{1}{l|}{}                                                                                                         & \multicolumn{9}{c|}{Semana}                                                                                                                                                                                                    \\ \hline
+\multicolumn{1}{|c|}{Atividade}                                                                                               & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{9} \\ \hline
+\multicolumn{1}{|c|}{1 - Escrever relatório 1}                                                                                & \multicolumn{1}{c|}{X} &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{2 - Levantar a relação de materiais}                                                                     & \multicolumn{1}{c|}{X} & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}3 - Estudar e pesquisar o assunto \\ e trabalhos relacionados\end{tabular}}   & X                      & \multicolumn{1}{c|}{X} &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{4 - Escrever relatório 2}                                                                                &                        & \multicolumn{1}{c|}{X} &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{5 - Controlar o motor de HD}                                                                             & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
+\multicolumn{1}{|c|}{6 - Escrever relatório 3}                                                                                &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{7 - Programar o Arduino (Display)}                                                                       & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}8 - Fazer modos de controle \\ onde o Arduino comanda o\\ motor\end{tabular}} & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
+\multicolumn{1}{|c|}{9 - Testes preliminares}                                                                                 &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{10 - Escrever relatório 4}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{11 - Realizar a montagem da máquina}                                                                     &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{12 - Realizar Testes}                                                                                    & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
+\multicolumn{1}{|c|}{13 - Escrever relatório 5}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{14 - Correção de Erros na máquina}                                                                       & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
+\multicolumn{1}{|c|}{15 - Experimentos com a máquina}                                                                         &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{16 - Escrever relatório 6}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{17 - Revisão da redação}                                                                                 &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{18 - Escrever relatório 7}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
+\multicolumn{1}{|c|}{19 - Entrega do Trabalho}                                                                                & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+%%------------------------------------------------------
+%% Section
+\section{R2 - Relação dos materiais e custos}
+Foram feitas alterações no relatório 1, anteriormente foi escrito no programa Microsoft Word, agora está sendo empregado o uso do \LaTeX. A descrição anterior foi modificada para descrever melhor a máquina, foi inserido maiores informações ao cronograma mostrado na \cite{tab:tabela2}, desta maneira pode-se verificar de forma mais clara as atividades a serem implementadas.
+
+Os materiais que serão utilizados podem ser visualizados de forma abrangente na, entre os componentes está o display que servirá como o meio para a comunicação entre o usuário e a máquina por meio do arduino, o motor de disco rígido foi uma gentileza de uma loja que faz manutenção de computadores.Os sensores Hall 3144 serão para extrair dados de rotação e em conjunto com outros componentes eletrônicos realizarará a rotação do motor. As chaves táctil, acabamentos dos botões e potenciômetro serão para realizar a entrada de dados pelo usuário. Os demais componentes eletrônicos como exemplo dos diodos, capacitores, resistores, amplificador operacional, regulador de tensão, transistores e a placa cobreada tem o objetivo de realizar a placa controladora do motor.
+
+
+\begin{table}[!htpb]
+\renewcommand{\arraystretch}{1.3}
+\caption{Relação dos Materiais e Custos}
+\label{tab:tabela2}
+\centering
+\begin{tabular}{c|c|c|}
+\hline
+\multicolumn{1}{|l|}{\textbf{Quantidade}} & \multicolumn{1}{l|}{\textbf{Nome do Componente}} & \multicolumn{1}{l|}{\textbf{Valor {[}R\${]}}} \\ \hline
+\multicolumn{1}{|c|}{2x}                  & Chave táctil                                     & 0,50                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Motor HD                                         & 0,00                                          \\ \hline
+\multicolumn{1}{|c|}{2x}                  & Acabamentos dos Botões                           & 1,00                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Arduino UNO                                      & 54,90                                         \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Potenciômetro 10k                                & 1,50                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Fonte 12V                                        & 15,00                                         \\ \hline
+\multicolumn{1}{|c|}{3x}                  & Sensor Hall 3144                                 & 9,00                                          \\ \hline
+\multicolumn{1}{|c|}{3x}                  & Transistor Tip 126                               & 5,70                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Amplificador Operacional Lm 741                  & 1,60                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Regulador de Tensão Lm 350                       & 7,46                                          \\ \hline
+\multicolumn{1}{|c|}{3x}                  & Diodo 1N5337                                     & 1,80                                          \\ \hline
+\multicolumn{1}{|c|}{2x}                  & Diodo 1n5404                                     & 0,70                                          \\ \hline
+\multicolumn{1}{|c|}{4x}                  & Diodo 1n4007                                     & 0,40                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Caixa para intalações Elétricas                  & 50,00                                         \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Capacitores e Resistores                         & 2,00                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Display 16x2 Azul                                & 16,90                                         \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Knob para Potenciômetro                          & 5,70                                          \\ \hline
+\multicolumn{1}{|c|}{1x}                  & Placa cobreada de fibra                          & 11,80                                         \\ \hline
+\multicolumn{1}{l|}{}                     & \multicolumn{1}{r|}{\textbf{Total}}              & 185,96                                        \\ \cline{2-3} 
+\end{tabular}
+\end{table}
+
+
+
+
+
+%%------------------------------------------------------
+%% Section (no numbering, use section* for acknowledgment)
+%% UFSC: no necessary
+% \section*{Acknowledgment}
+% The authors would like to thank...
+
+
+
+%%------------------------------------------------------
+%% References (Option 1): extern file
+%% Edit with JabRef, for instance
+%%\bibliographystyle{IEEEtran} %% Estilo da referência
+%%\bibliography{references}    %% Caminho do arquivo (sem extensão)
+
+
+
+% %%------------------------------------------------------
+% %% References (Option 2): incorporeted
+% 
+% \begin{thebibliography}{10} 
+% 
+%   \bibitem{Kopka:1999}
+%     H.~Kopka and P.~W. Daly, \emph{A Guide to
+%     \LaTeX}, 3rd~ed. Harlow, 
+%     England: Addison-Wesley, 1999.
+% 
+%   \bibitem{Huynen:1998} 
+%     Huynen, M.~A. and Bork, P. 1998. Measuring 
+%     genome evolution. {\em Proceedings of the 
+%     National Academy of Sciences USA} 
+%     95:5849--5856.
+% 
+% 
+% \end{thebibliography}
+
+
+
+\end{document}
