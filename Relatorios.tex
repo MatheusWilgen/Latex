@@ -40,6 +40,14 @@
 
 % \usepackage{showframe} %% just for the example
 
+%%% Pacote extra: (Ajuda do Professor para centralizar a tabela 1)
+\usepackage{tabularx}
+\usepackage{multirow} 
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{soul}
+\usepackage{color}
+
 % \usepackage[sort,compress]{cite} %% disable if natbib package is activated
 \usepackage[numbers,sort&compress,square]{natbib} %% e.g., [2-5]
 
@@ -79,7 +87,11 @@
   pdfborder={0 0 0},
 }
 
-
+%Definiçoes que o Professor fez para centralizar a tabela 1
+%Definitions on tabularx:\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{J}{>{\justifying\arraybackslash}X}
 
 
 %%------------------------------------------------------
@@ -140,9 +152,10 @@ fino uniforme sobre superfícies planas, é possível alcançar espessuras da or
 micrometros a nanômetros, este fato faz das máquinas de spin coating muito desejadas
 em laboratórios de filmes finos e tratamentos de superfícies. Este trabalho terá o
 objetivo de produzir uma máquina de spin coating com baixo custo em relação as
-comerciais, também tem como objetivo o desenvolvimento de um driver para motores
+comerciais, também tem como objetivo o desenvolvimento de um \textit{driver} para motores
 sem escovas DC de HD’s, será utilizado processos de fabricação de PCI, programação
-em C++ e microcontroladores Atmel. Spin coating é amplamente utilizado para o estudo de filmes finos uniformes, em aplicações que incluem sensores, sistemas microeletromecânicos e circuitos integrados.
+na linguagem C++ e microcontroladores Atmel. Spin coating é amplamente utilizado para o estudo de filmes finos uniformes, 
+em aplicações que incluem sensores, sistemas microeletromecânicos e circuitos integrados.
 
     \end{abstract}
     %%----------------- Keywords
@@ -173,46 +186,49 @@ em C++ e microcontroladores Atmel. Spin coating é amplamente utilizado para o e
 
 \IEEEPARstart{O} processo de Spin Coating consiste em fixar um substrato através de vácuo ou material adesivo, com o centro de massa centralizado com o rotor da máquina utilizada, adiciona-se a solução desejada sobre o substrato para que seja produzido um filme fino, neste processo a rotação retira o excesso de solução, por meio da força centrípeta. Para esta finalidade é utilizado uma máquina que tem a capacidade de controlar a rotação do substrato, este controle pode ser feito através da manipulação direta do usuário ou de um modo de operação automático da ferramenta.
 
-
 \begin{table}[!htbp]
-\renewcommand{\arraystretch}{1.3}
+{%
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\mr}[3]{\multirow{#1}{#2}{#3}}
 \caption{Cronograma de atividades}
 \label{tab:tabela1}
-\centering
-\begin{tabular}{c|l|l|l|l|l|l|l|l|l|}
-\cline{2-10}
-\multicolumn{1}{l|}{}                                                                                                         & \multicolumn{9}{c|}{Semana}                                                                                                                                                                                                    \\ \hline
-\multicolumn{1}{|c|}{Atividade}                                                                                               & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{9} \\ \hline
-\multicolumn{1}{|c|}{1 - Escrever relatório 1}                                                                                & \multicolumn{1}{c|}{X} &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{2 - Levantar a relação de materiais}                                                                     & \multicolumn{1}{c|}{X} & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
-\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}3 - Estudar e pesquisar o assunto \\ e trabalhos relacionados\end{tabular}}   & X                      & \multicolumn{1}{c|}{X} &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{4 - Escrever relatório 2}                                                                                &                        & \multicolumn{1}{c|}{X} &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{5 - Controlar o motor de HD}                                                                             & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
-\multicolumn{1}{|c|}{6 - Escrever relatório 3}                                                                                &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{7 - Programar o Arduino (Display)}                                                                       & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
-\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}8 - Fazer modos de controle \\ onde o Arduino comanda o\\ motor\end{tabular}} & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
-\multicolumn{1}{|c|}{9 - Testes preliminares}                                                                                 &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{10 - Escrever relatório 4}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{11 - Realizar a montagem da máquina}                                                                     &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{12 - Realizar Testes}                                                                                    & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
-\multicolumn{1}{|c|}{13 - Escrever relatório 5}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{14 - Correção de Erros na máquina}                                                                       & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
-\multicolumn{1}{|c|}{15 - Experimentos com a máquina}                                                                         &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{16 - Escrever relatório 6}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{17 - Revisão da redação}                                                                                 &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{18 - Escrever relatório 7}                                                                               &                        &                        &                        &                        &                        &                        &                        &                        &                        \\ \hline
-\multicolumn{1}{|c|}{19 - Entrega do Trabalho}                                                                                & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{}  &                        \\ \hline
-\end{tabular}
+\begin{center}
+\begin{tabularx}{\columnwidth}{|L|c|cccccccc}\hline
+\mc{1}{|c|}{\mr{2}{*}{Atividade}} & \mc{9}{c|}{Semana}\\ \cline{2-10}
+ & 1 & \mc{1}{c|}{2} & \mc{1}{c|}{3} & \mc{1}{c|}{4} & \mc{1}{c|}{5} & \mc{1}{c|}{6} & \mc{1}{c|}{7} & \mc{1}{c|}{8} & \mc{1}{c|}{9}\\\hline
+Elaboração do $R_1$ & X & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{}\\\hline
+Levantamento dos materiais & X & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{}\\\hline
+Estudo e pequisa sobre o assunto com trabalhos relacionados & X & \mc{1}{c|}{X} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{} & \mc{1}{c|}{}\\\hline
+Elaboração do $R_2$ & × & \mc{1}{c|}{X} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Controle do motor de HD &  & \mc{1}{c|}{×} & \mc{1}{c|}{X} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Elaboração do $R_3$ & × & \mc{1}{c|}{×} & \mc{1}{c|}{X} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Programação da Interface entre Arduino e Display & × & \mc{1}{c|}{×} & \mc{1}{c|}{X} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Elaborar modos de controle entre o Arduino e o Motor & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Testes preliminares & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Escrever $R_4$ & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Montagem da máquina & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Testes Definitivos & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Elaboração do $R_5$ & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Correção de Erros & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Experimentos & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Elaboração do $R_6$ & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Revisão da redação & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Elaboração do $R_7$ & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+Entrega do Trabalho & × & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×} & \mc{1}{c|}{×}\\\hline
+\end{tabularx}
+\end{center}
+}%
 \end{table}
+
 
 
 
 %%------------------------------------------------------
 %% Section
 \section{R2 - Relação dos materiais e custos}
-Foram feitas alterações no relatório 1, anteriormente foi escrito no programa Microsoft Word, agora está sendo empregado o uso do \LaTeX. A descrição anterior foi modificada para descrever melhor a máquina, foi inserido maiores informações ao cronograma mostrado na \cite{tab:tabela2}, desta maneira pode-se verificar de forma mais clara as atividades a serem implementadas.
+Foram feitas alterações no relatório 1, anteriormente foi escrito no programa Microsoft Word, agora está sendo empregado o uso do \LaTeX. A descrição anterior foi modificada para descrever melhor a máquina, foi inserido mais informações ao cronograma mostrado na Tabela~\ref{tab:tabela1}, desta maneira pode-se verificar de forma mais clara as atividades a serem implementadas.
 
-Os materiais que serão utilizados podem ser visualizados de forma abrangente na, entre os componentes está o display que servirá como o meio para a comunicação entre o usuário e a máquina por meio do arduino, o motor de disco rígido foi uma gentileza de uma loja que faz manutenção de computadores.Os sensores Hall 3144 serão para extrair dados de rotação e em conjunto com outros componentes eletrônicos realizarará a rotação do motor. As chaves táctil, acabamentos dos botões e potenciômetro serão para realizar a entrada de dados pelo usuário. Os demais componentes eletrônicos como exemplo dos diodos, capacitores, resistores, amplificador operacional, regulador de tensão, transistores e a placa cobreada tem o objetivo de realizar a placa controladora do motor.
+Os materiais que serão utilizados podem ser visualizados de forma abrangente na Tabela~\ref{tab:tabela2}, entre os componentes está o display que servirá como o meio para a comunicação entre o usuário e a máquina por meio do arduino. Os sensores Hall 3144 \cite{Halldata:2005} serão utilizados para extrair dados de rotação e em conjunto com outros componentes eletrônicos realizarar a rotação do motor. As chaves tácteis, acabamentos dos botões e potenciômetro serão para realizar a entrada de dados pelo usuário. Os demais componentes eletrônicos como exemplo dos diodos, capacitores, resistores, amplificador operacional, regulador de tensão, transistores e a placa cobreada tem o objetivo de realizar a placa controladora do motor.
 
 
 \begin{table}[!htpb]
@@ -222,7 +238,7 @@ Os materiais que serão utilizados podem ser visualizados de forma abrangente na
 \centering
 \begin{tabular}{c|c|c|}
 \hline
-\multicolumn{1}{|l|}{\textbf{Quantidade}} & \multicolumn{1}{l|}{\textbf{Nome do Componente}} & \multicolumn{1}{l|}{\textbf{Valor {[}R\${]}}} \\ \hline
+\multicolumn{1}{|c|}{\textbf{Quantidade}} & \multicolumn{1}{c|}{\textbf{Nome do Componente}} & \multicolumn{1}{c|}{\textbf{Valor {[}R\${]}}} \\ \hline
 \multicolumn{1}{|c|}{2x}                  & Chave táctil                                     & 0,50                                          \\ \hline
 \multicolumn{1}{|c|}{1x}                  & Motor HD                                         & 0,00                                          \\ \hline
 \multicolumn{1}{|c|}{2x}                  & Acabamentos dos Botões                           & 1,00                                          \\ \hline
@@ -247,6 +263,39 @@ Os materiais que serão utilizados podem ser visualizados de forma abrangente na
 
 
 
+\section{R3 - Introdução}
+O procedimento de spin coating é simples, entretanto máquinas comerciais que realizam este procedimento tem um elevado custo,
+como exemplo destaco um modelo considerado de baixo custo chamado SCK-300 \cite{SCK-300} tem um valor da ordem de 2 mil reais, este 
+modelo é também considerado de construção caseira, outro exemplo, mas relacionado a um modelo profissional cito
+a Ossila \cite{Ossila}, esta máquina tem um valor elevado da ordem de 13 mil reais. Diante do exposto surge a ideia de projetar um
+spin coater a partir de materiais simples e que alcance bons resultados e por um preço baixo, um trabalho interessante sobre o assunto é o \textit{Spin coater based on brushless dc motor of hard disk drivers}~\cite{SpinCoater:2006}, neste artigo é discutido a possibilidade de construir um \textit{driver} para controlar um motor dc sem escovas, o esquema utilizado é baseado na força eletromotriz gerada nos enrolamentos do motor para obter a posição do rotor, e dessa maneira realizar a comutação nas fases do motor, para gerenciar os sinais é utilizado um microcontrolador PIC, a partir da leitura foi iniciado o desenvolvimento de um \textit{driver} baseado em sensores hall, desta maneira pode-se obter a posição do motor a partir do imã permanente do rotor e assim comutar as fases e extrair informações da velocidade de rotação com o auxílio do microcontrolador Arduino \cite{Arduino}.
+
+\section{Materiais e métodos}
+Para a realização do projeto é utilizado o ambiente de desenvolvimento Arduino IDE para programar o Arduino UNO \cite{Arduino}, o Proteus (versão 8) \cite{Proteus} é o software usado para o projeto eletrônico do driver e para realizar as simulações do funcionamento. O motor utilizado foi retirado de um disco rígido de computador a construção deste motor é robusta e visa evitar vibrações nos discos de memória e podem alcançar velocidades altas da ordem de 10000 rpm, estas características são desejadas para a produção de uma máquina de spin coating. Para a interface com o usuário foi utilizado um display 16x2, um potenciometro linear de 10 kΩ, duas chaves tácteis, para alimentar o projeto foi utilizado uma fonte de 12 Volts e 3 Ampéres. 
+
+Tendo em mãos o motor de disco rígido, surge a questão sobre o método de controle, primeiramente optou-se pelo uso de um controlador de velocidade comercial para motores sem escovas, em testes este controlador revelou os problemas na utilização do controle por indução do rotor nas bobinas do motor, ao inserir alguma carga no eixo do rotor o motor, este não era capaz de iniciar o movimento de forma autônoma.
+Para ter uma rotação precisa, e continuar com as vantagens do motor de disco rígido, foi
+decidido instalar sensores de efeito hall entre as bobinas do motor (figura não inserida), após instalar os
+sensores foi desenvolvido o controlador para que fosse possível alterar o comportamento
+da rotação e obter autonomia na hora de obter sinais do circuito ou aprimorar a máquina.
+Após testar algumas topologias de circuitos, obteve-se o melhor resultado com o controlador
+mostrado de forma esquemática na (figura não inserida), cada fase do motor tem a sua posição
+representada pelos símbolos F1, F2 e F3 já o terra do motor é ligado ao terra da placa, este controlador
+foi projetado para suportar até 3 Ampères, mas em média a 10000 rpm drena da fonte por volta de
+1.5 Ampères. Foi desenvolvido também uma placa auxiliar para a interface com o usuário, o
+esquemático desta placa pode ser visualizado na (figura não inserida).
+
+
+
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=.23\columnwidth]{Sensores instalados no motor.jpg}
+\caption{Sensores hall instalados no motor.}
+\label{fig:sensores_motor}
+\end{figure}
+
+
 
 
 %%------------------------------------------------------
@@ -260,8 +309,8 @@ Os materiais que serão utilizados podem ser visualizados de forma abrangente na
 %%------------------------------------------------------
 %% References (Option 1): extern file
 %% Edit with JabRef, for instance
-%%\bibliographystyle{IEEEtran} %% Estilo da referência
-%%\bibliography{references}    %% Caminho do arquivo (sem extensão)
+\bibliographystyle{IEEEtran} %% Estilo da referência
+\bibliography{references}    %% Caminho do arquivo (sem extensão)
 
 
 
